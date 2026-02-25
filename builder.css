@@ -1,0 +1,41 @@
+body{
+    margin: 0%;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+*{
+    margin: 0 ;
+}
+.Header{
+    position: fixed;
+     top: 0;
+     left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+   border-bottom: 2px solid rgb(250, 245, 245);
+   background-color: rgb(253, 254, 255) ;
+   z-index: 1000;
+    
+}
+.logo{
+    height: 60px;
+    width: 200px;
+}
+.nav_bar{
+    
+    display: flex;
+    align-items: center;
+    
+    
+}
+.Menu{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    
+}
