@@ -1,0 +1,43 @@
+.Categories{
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-bottom: 80px;
+}
+.Categories p{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+
+.items{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.item{
+    margin-top: 40px;
+    border: 2px solid rgb(236, 234, 234);
+    border-radius: 50%;
+    height: 50px;
+    
+}
+.meat{
+   
+    height: 150px;
+    width: 150px;
+    border: 2px solid rgb(236, 234, 234);
+    border-radius: 20px;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+// .meat p:hover{
+    
+//     color: red;
+// }
+.meat:hover{
+     color: red;
+    transform: translateY(-2px);
+}

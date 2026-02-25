@@ -1,0 +1,59 @@
+.popular{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 150px;
+}
+.popular p{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.list{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+
+}
+.chicken{
+    top: 0%;
+    left: 0;
+    height: 200px;
+    width: 280px;
+    
+}
+.specials{
+     border: 2px solid rgb(243, 239, 239);
+     padding-right: 0%;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.specials:hover{
+    transform: translateY(-10px);
+}
+.specials p{
+    padding-left: 20px;
+}
+
+.mandi{
+    border-bottom: 2px solid whitesmoke;
+    cursor: pointer;
+}
+.mandi:hover{
+    color: red;
+}
+.bill{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: red;
+    font-weight: bold;
+    
+}
+
+.bill span{
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    padding: 5px 5px;
+    width: 80px;
+}

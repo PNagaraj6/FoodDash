@@ -1,0 +1,55 @@
+.delicous_meal{
+    display: flex;
+    justify-content: center;
+    height: 310px;
+    margin-top: 70px;
+    align-items: center;
+    border-bottom: 2px solid rgb(250, 246, 246);
+    background-color: rgb(241, 231, 231);
+}
+.search_box{
+    width: 40%;
+    text-align: center;
+}
+.search_box h1{
+    font-size: 3rem;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.search_box p{
+    font-size: 1.2rem;
+}
+.search{
+    display: flex;
+    align-items: center;
+    height:auto;
+    padding: 10px;
+    margin-top: 20px;
+     border: 2px solid white;
+     background-color: aliceblue;
+     border-radius: 10px;
+     cursor: pointer;
+}
+.search:hover{
+    border:2px solid red;
+}
+.box{
+    height: 40px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+.box:hover{
+    border: none;
+}
+.btn{
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 20%;
+    border: none;
+    padding: 10px;
+    padding-right: 10px;
+    height: 35px;
+    border-radius: 10%;
+}
