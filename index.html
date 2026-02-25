@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOOD DASH</title>
     <link rel="stylesheet" href="./scss/style.css">
+    
 </head>
 <body>
-    <section class="Header">
+    <section id="Header" class="Header">
         <div class="nav_bar">
 
             <img class="logo" src="foodlogo.jpeg">
             <span><strong>Food Dash</strong></span>
         </div>
             <div class="Menu">
-                <p>Home</p>
-                <p>Menu</p>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
                 <p>Builder</p>
                 <p><span>🛒</span>Cart</p>
             </div>
         
     </section>
 
-    <section class="delicous_meal">
+    <section id="delicous_meal" class="delicous_meal">
         <div class="search_box">
         <h1>Discover Delicious Meals</h1>
         <p>Browse thousands of recipes from around the world. 
@@ -82,6 +83,7 @@
             <img class="chicken" src="chicken.jpg">
             <p class="mandi">chicken mandi</p>
             <p class="bill">$23.3 <span>🛒 Add</span></p>
+            <button class="view-btn" data-id="1">View</button>
         </div>
          <div class="specials">
             <img class="chicken" src="chicken.jpg">
@@ -123,3 +125,109 @@
     
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script >
+    // Select all meal buttons
+const buttons = document.querySelectorAll(".view-btn");
+
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+
+        // Get meal id from button
+        const mealId = this.getAttribute("data-id");
+
+        // Redirect to meal page with id in URL
+        window.location.href = `meal.html?id=${mealId}`;
+
+    });
+});
+
+</script>
