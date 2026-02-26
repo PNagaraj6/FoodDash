@@ -97,6 +97,7 @@
   const foodCards = document.getElementById("food_cards");
   const  loadMoreBtn=document.getElementById("loadMoreBtn");
   const count=document.getElementById("left");
+  loadMoreBtn.style.display="none";
   function loadMeals(categorie){
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
     .then((res) => res.json())
@@ -108,6 +109,7 @@
             foodCards.innerHTML = "<h2>No meals found</h2>";
             return;
         }
+        count.innerHTML=`${data.meals.length} meals found`; 
         // data.meals.forEach(food => createFoodCard(food));
         allmeals=data.meals;
         loadNextMeals();
@@ -135,6 +137,9 @@
   function createFoodCard(food){
     const card = document.createElement("div");
     card.className = "food_card";
+    card.onclick = () => {
+    window.location.href = `product.html?id=${food.idMeal}`;
+};
 
     card.innerHTML = `
         <img src="${food.strMealThumb}" alt="${food.strMeal}">
@@ -166,6 +171,7 @@
     limit=12;
     allmeals=searchdata.meals;
     loadNextMeals();
+    count.innerHTML=`${searchdata.meals.length} meals found`;
 
   }
   );
@@ -174,3 +180,4 @@
 
   
 </script>
+    
