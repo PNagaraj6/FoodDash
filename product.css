@@ -2,8 +2,48 @@ body{
     padding-top: 3%;
     padding: 0 10%;
 }
+.Header{
+    position: fixed;
+     top: 0;
+     left: 0;
+    width: 100%;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+   border-bottom: 2px solid rgb(250, 245, 245);
+   background-color: rgb(253, 254, 255) ;
+   z-index: 1000;
+    
+}
+.logo{
+    height: 60px;
+    width: 200px;
+}
+.nav_bar{
+    
+    display: flex;
+    align-items: center;
+    
+    
+}
+.Menu{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    
+}
+.Menu a{
+    text-decoration: none;
+}
+.Menu a:hover{
+    color: red;
+}
+
 
 .back-link {
+    margin-top: 80px;
     display: inline-flex;
     align-items: center;
     gap: 8px;

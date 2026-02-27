@@ -39,6 +39,15 @@ body {
   gap: 40px;
 }
 
+.Menu a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Menu a:hover {
+  color: red;
+}
+
 .delicous_meal {
   display: flex;
   justify-content: center;
@@ -138,8 +147,16 @@ body {
   cursor: pointer;
 }
 
-.meat:hover {
+.meat a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.meat a:hover {
   color: red;
+}
+
+.meat:hover {
   transform: translateY(-2px);
 }
 

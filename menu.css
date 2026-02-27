@@ -42,6 +42,13 @@ body{
     gap: 40px;
     
 }
+.Menu a{
+    text-decoration: none;
+}
+.Menu a:hover{
+    color: red;
+}
+
 .categories{
     /* background-color: aqua; */
     margin-top: 20px;
@@ -142,6 +149,10 @@ body{
     gap: 1rem;
     text-align: left;
     height: 55vh;
+    cursor: pointer;
+}
+.food_card:hover{
+    transform: translateY(-2px);
 }
 .food_card img{
     width: 100%;
@@ -164,6 +175,7 @@ body{
     gap: 10px;
     border-radius:5px;
     align-items: center;
+    cursor: pointer;
 }
 /* .food-card-matter h3{
 

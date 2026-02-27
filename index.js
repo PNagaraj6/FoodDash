@@ -7,42 +7,53 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=chicken")
     
     const firstEight = data.meals.slice(0, 8);
 
-    firstEight.forEach(meal => {
+firstEight.forEach(meal => {
 
-      const card = document.createElement("div");
-      card.classList.add("specials");
+  meal.price = (Math.random() * (50 - 10) + 10).toFixed(2);
 
-      card.innerHTML = `
-        <img class="chicken" src="${meal.strMealThumb}">
-        <p class="mandi">${meal.strMeal}</p>
-        <p class="bill">
-          $23.99 <span>🛒 Add</span>
-        </p>
-      `;
+  const card = document.createElement("div");
+  card.classList.add("specials");
 
-      container.appendChild(card);
-    });
+  card.innerHTML = `
+    <img class="chicken" src="${meal.strMealThumb}">
+    <p class="mandi">${meal.strMeal}</p>
+    <p class="bill">
+      $${meal.price} <span>🛒 Add</span>
+    </p>
+  `;
 
-  })
+  // 🔥 When clicked → go to product page
+  card.addEventListener("click", () => {
+    window.location.href = `product.html?id=${meal.idMeal}`;
+  });
+
+  container.appendChild(card);
+});
+ })
+ 
   .catch(error => console.log("Error:", error));
-
 
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
   .then(response => response.json())
   .then(fooddata => {
       const store = document.getElementById("categorieContainer");
-      const firstsix = fooddata.categories.slice(0, 6); // first 6 categories
+      const firstsix = fooddata.categories.slice(0, 6); 
 
       firstsix.forEach(categories => {
           const cards = document.createElement("div");
           cards.classList.add("meat");
 
           cards.innerHTML = `
+
+             <a href="menu.html"${categories.strCategory}>
               <img class="item" src="${categories.strCategoryThumb}">
               <p>${categories.strCategory}</p>
+             </a>
           `;
 
           store.appendChild(cards);
       });
   })
   .catch(error => console.log("Error:", error));
+
+  

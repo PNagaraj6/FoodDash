@@ -39,3 +39,10 @@ body{
     gap: 40px;
     
 }
+.Menu a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.Menu a:hover{
+    color: red;
+}

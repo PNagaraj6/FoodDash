@@ -31,13 +31,16 @@
     border: 2px solid rgb(236, 234, 234);
     border-radius: 20px;
     background-color: whitesmoke;
-    cursor: pointer;
+   cursor: pointer;
 }
-// .meat p:hover{
-    
-//     color: red;
-// }
-.meat:hover{
+.meat a{
+    text-decoration: none;
+   cursor: pointer;
+}
+.meat a:hover{
      color: red;
+     
+}
+.meat:hover{
     transform: translateY(-2px);
 }
