@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOOD DASH</title>
     <link rel="stylesheet" href="builder.css">
+    <link rel="icon" type="image/png" href="../favicon.svg">
 </head>
 <body>
         <section class="Header">
@@ -25,6 +26,117 @@
             </div>
         
     </section>
+      <div class="container">
+        <div class="left-panel">
+            <h1>Build Your Pizza</h1>
+            <p class="subtitle">Drag toppings onto your pizza to customize it. Choose your size and add to cart!</p>
+            <div class="size-selector">
+                <button class="size-btn" data-size="small" data-price="8.99">Small $8.99</button>
+                <button class="size-btn active" data-size="medium" data-price="11.99">Medium $11.99</button>
+                <button class="size-btn" data-size="large" data-price="14.99">Large $14.99</button>
+            </div>
+
+        
+            <div class="pizza-builder-area">
+                <div class="pizza-wrapper size-medium" id="pizza-wrapper">
+
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><filter id='s'><feDropShadow dx='0' dy='4' stdDeviation='6' flood-opacity='0.2'/></filter></defs><circle cx='100' cy='100' r='90' fill='%23e3a055' filter='url(%23s)'/><circle cx='100' cy='100' r='82' fill='%23cb6f28'/><circle cx='100' cy='100' r='78' fill='%23f0ba73'/></svg>"
+                        alt="Pizza Base" class="pizza-base">
+        
+                    <div class="toppings-layer" id="toppings-layer"></div>
+                </div>
+                <p class="drag-hint">Drag toppings here!</p>
+            </div>
+        </div>
+
+    
+        <div class="right-panel">
+
+            
+            <div class="toppings-section">
+                <h2>Toppings</h2>
+                <p class="subtitle">Drag to add ($1.50 each)</p>
+
+                
+                <div class="toppings-grid">
+                    <div class="topping-card" data-id="pepperoni">
+                
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ea580c'/><circle cx='30' cy='30' r='6' fill='%239a3412'/><circle cx='70' cy='40' r='7' fill='%239a3412'/><circle cx='45' cy='70' r='6' fill='%239a3412'/><circle cx='70' cy='70' r='5' fill='%239a3412'/><circle cx='35' cy='55' r='5' fill='%239a3412'/></svg>"
+                            alt="Pepperoni">
+                        <span>Pepperoni</span>
+                    </div>
+                
+                    <div class="topping-card" data-id="mushrooms">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f344.svg"
+                            alt="Mushrooms">
+                        <span>Mushrooms</span>
+                    </div>
+                    <div class="topping-card" data-id="olives">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad2.svg" alt="Olives">
+                        <span>Olives</span>
+                    </div>
+                    <div class="topping-card" data-id="peppers">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad1.svg"
+                            alt="Peppers">
+                        <span>Peppers</span>
+                    </div>
+                    <div class="topping-card" data-id="onions">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c5.svg" alt="Onions">
+                        <span>Onions</span>
+                    </div>
+                    <div class="topping-card" data-id="bacon">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f953.svg" alt="Bacon">
+                        <span>Bacon</span>
+                    </div>
+                    <div class="topping-card" data-id="chicken">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f357.svg"
+                            alt="Chicken">
+                        <span>Chicken</span>
+                    </div>
+                    <div class="topping-card" data-id="pineapple">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f34d.svg"
+                            alt="Pineapple">
+                        <span>Pineapple</span>
+                    </div>
+                    <div class="topping-card" data-id="jalapeno">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f336.svg"
+                            alt="Jalapeño">
+                        <span>Jalapeño</span>
+                    </div>
+                </div>
+            </div>
+
+    
+            <div class="summary-section">
+                <h2>Your Pizza</h2>
+                <p class="summary-subtitle" id="summary-size-price">Medium Pizza — $11.99</p>
+
+                <!-- List of added toppings -->
+                <div class="added-toppings-list">
+                    <p class="empty-toppings">No toppings added yet</p>
+                </div>
+
+                <!-- Footer with total price and action buttons -->
+                <div class="summary-footer">
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="total-price" class="price">$11.99</span>
+                    </div>
+
+                    <button class="add-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="start-over-btn">
+                        <i class="fas fa-undo"></i> Start Over
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <script src="builder.js"></script>
     <section class="footer">
     <p>&copy; 2026 My Website. All rights reserved.</p>
 </section>

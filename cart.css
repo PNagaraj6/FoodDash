@@ -52,7 +52,7 @@ body{
 }
 
 
-.cart{
+.carti{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -63,7 +63,6 @@ body{
     height: 80vh;
 }
 .heade{
-    margin-top: 80px;
     justify-content: flex-start;
     padding: 0 10%;
 }
@@ -76,11 +75,11 @@ body{
     border: 1px solid white;
     border-radius: 10px;
 }
-.cart p{
+.carti p{
     color: #77749a;
 
 }
-.cart h3{
+.carti h3{
     color: #334155;
 }
 .cart-purchase{
