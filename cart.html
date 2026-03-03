@@ -30,7 +30,7 @@
         
     </section>
 
-  <h1 class="heade">Your Cart</h1>
+ <h1>Your Cart</h1>
     <div class="carti" id="carti">
         <img src="https://img.icons8.com/?size=100&id=9671&format=png&color=cbd5e1" alt="">
         <h2>Your cart is empty</h2>
@@ -39,32 +39,51 @@
             <button id="menuBtn">Browser Menu</button>
         </a>
     </div>
-    <div id="cart-purchase" class="cart-purchase">
-        <!-- <div class="cart-item">
-            <img src="https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg" alt="Arepa pelua"
-                class="cart-img">
-
-            <div class="cart-info">
-                <h3>Arepa pelua</h3>
-                <p class="price-each">$14.99 each</p>
-            </div>
-
-            <div class="cart-actions">
-                <div class="counter">
-                    <button class="minus">−</button>
-                    <span class="count">1</span>
-                    <button class="plus">+</button>
+    <div class="your-cart" id="your-cart">
+        <div class="cart-items" id="cart-items">
+            <!-- <div class="cart-item">
+                <div class="img-cart">
+                    <img src="https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg" alt="Arepa pelua">
+                    <div class="name-price">
+                        <h2>Arepa pelua</h2>
+                        <p>$14.99 each</p>
+                    </div>
                 </div>
-
-                <p class="total">$14.99</p>
-                <button class="delete"><img src="https://img.icons8.com/?size=32&id=YrBfpRuRR9fD&format=png&color=ef4444" alt=""></button>
+                <div class="counter-price-delete">
+                    <div class="counter">
+                        <p><span class="counter-btn " id="minus">-</span> 1 <span class="counter-btn " id="plus">+</span></p>
+                    </div>
+                    <h3>$14.99</h3>
+                    <img src="https://img.icons8.com/?size=32&id=GLSif9qTdoSW&format=png&color=ff4d6d" alt="dustbin" class="delete-btn">
+                </div>
+            </div> -->
+        </div>
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <hr>
+            <div class="row">
+                <p>Subtotal</p>
+                <p id="total">$29.98</p>
             </div>
-        </div> -->
-        <div class="order-summary" id="order-summary"></div>
+            <div class="tax row">
+                <p>Tax (8%)</p>
+                <p id="tax">$2.40</p>
+            </div>
+            <hr >
+            <div class="total row" >
+                <h3>Total</h3>
+                <h3 id="net-total">$32.38</h3>
+            </div>
+          <a href="checkout.html">
+              <button class="checkOut">
+                Proceed to Checkout
+            </button>
+          </a>
+            <p id="no-of-items">2 items</p>
+        </div>
+        <div></div>
     </div>
     <script src="cart.js"></script>
-    <script>
-renderCart();
 </script>
 </body>
 

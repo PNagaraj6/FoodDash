@@ -1,265 +1,91 @@
-// // const params = new URLSearchParams(window.location.search);
-// // const mealId = params.get("id");
-// // fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
-// // .then(res => res.json())
-// // .then(data => {
+// =========================
+// GLOBAL CART FUNCTIONS
+// =========================
+const CART_KEY = "cart";
 
-// //     const meal = data.meals[0];
+function getCart(){
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+}
 
-// //     // title
-// //     document.getElementById("mealName").innerText = meal.strMeal;
+function saveCart(cart){
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    updateCartCount();
+}
 
-// //     // image
-// //     document.querySelector(".product-hero-left img").src = meal.strMealThumb;
-// //     const price=document.getElementById('product-hero-left-price');
-// //     // price.innerHTML=`${price}`;
-// //     // category + area
-// //     document.querySelector(".varites").innerHTML =
-// //         `<p>${meal.strCategory}</p>
-// //          <p style="color=#f36244">${meal.strArea}</p>`;
-// //     const ingredient_object=getIngredients(meal);
-// //     const ingredients=document.getElementById('ingredients');
-    
-// //     ingredient_object.forEach(item=> {
-// //         const ingredient=document.createElement("div");
-// //   ingredient.className="ingredient";
-// //     ingredient.innerHTML=`<p class="ingredient-left">${item.name}</p>
-// //                     <p class="ingredient-right">${item.measure}</p>`
-// //     ingredients.append(ingredient);
-// // });
-// //     // document.getElementById('instructions').innerHTML=`${meal.strInstructions}`;
-// //     const paragraphs = meal.strInstructions
-// //   .split(/\r?\n/)
-// //   .filter(p => p.trim() !== "");
+function updateCartCount(){
+    const badge = document.getElementById("cartCount");
+    if(!badge) return;
 
-// // document.getElementById("instructions").innerHTML =
-// //   paragraphs.map(p => `<p class="instruction-step">${p}</p>`).join("");
-// //     // youtube button
-// //     document.querySelector(".product-cart-button").onclick = () => {
-// //         window.open(meal.strYoutube);
-// //     };
-// // foodCards=document.getElementById('product-food-cards');
-// // loadMeals(meal.strCategory);
+    let cart = getCart();
+    let total = cart.reduce((s,i)=>s+i.qty,0);
+    badge.innerText = total;
+}
 
+function addToCart(food, price){
+    let cart = getCart();
 
-// // });
-// // function loadMeals(categorie){
-// //     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
-// //     .then((res) => res.json())
-// //     .then(data => {
-// //        const allmeals=data.meals;
-// //         // data.meals.forEach(food => createFoodCard(food));
-// //        const nextMeals=allmeals.slice(0,4); 
-// //        nextMeals.forEach(food => createFoodCard(food));
+    let existing = cart.find(i => i.id === food.idMeal);
 
-// //         // const countnumber=document.createElement("p");
-// //         // countnumber.innerHTML=`${allmeals.length} meals found`;
-// //         // count.append(countnumber);
+    if(existing){
+        existing.qty++;
+    }else{
+        cart.push({
+            id: food.idMeal,
+            name: food.strMeal,
+            img: food.strMealThumb,
+            price: price,
+            qty: 1
+        });
+    }
 
-// //       });
-// //   }
-// //   function createFoodCard(food){
-// //     const card = document.createElement("div");
-// //     card.className = "food_card";
-// //     card.onclick = () => {
-// //     window.location.href = `product.html?id=${food.idMeal}&price=${price}`;
-// // };
+    saveCart(cart);
+    showToast(`${food.strMeal} added to cart 🛒`);
+}
+
+updateCartCount();
 
 
-// //     card.innerHTML = `
-// //         <img src="${food.strMealThumb}" alt="${food.strMeal}">
-// //         <div class="food-card-matter">
-// //             <h3>${food.strMeal}</h3>
-// //             <div class="rate-addcart">
-// //                 <p>$${(Math.random()*10+5).toFixed(2)}</p>
-// //                 <button class="cart-button">
-// //                     <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff" alt="">
-// //                         <p>Add</p>
-// //                 </button>
-// //             </div>
-// //         </div>
-// //     `;
-
-// //     foodCards.appendChild(card);
-// //   }
-// // function getIngredients(meal){
-// //     let ingredients = [];
-
-// //     for(let i=1; i<=20; i++){
-
-// //         let name = meal[`strIngredient${i}`];
-// //         let measure = meal[`strMeasure${i}`];
-
-// //         if(name && name.trim() !== ""){
-// //             ingredients.push({
-// //                 name: name.trim(),
-// //                 measure: measure ? measure.trim() : ""
-// //             });
-// //         }
-// //     }
-
-// //     return ingredients;
-// // }
-// const params = new URLSearchParams(window.location.search);
-// const mealId = params.get("id");
-
-// function loadMeal(mealId) {
-//   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
-//     .then(res => res.json())
-//     .then(data => {
-//       const meal = data.meals[0];
-
-//       // Set meal title
-//       document.getElementById("mealName").innerText = meal.strMeal;
-
-//       // Set meal image
-//       document.querySelector(".product-hero-left img").src = meal.strMealThumb;
-
-//       // Set category + area
-//       document.querySelector(".varites").innerHTML = `
-//           <p>${meal.strCategory}</p>
-//           <p style="color:#f36244">${meal.strArea}</p>
-//       `;
-
-//       // Clear and set ingredients list
-//       const ingredients = document.getElementById('ingredients');
-//       ingredients.innerHTML = ''; // Clear old ingredients
-//       const ingredient_object = getIngredients(meal);
-//       ingredient_object.forEach(item => {
-//         const ingredient = document.createElement("div");
-//         ingredient.className = "ingredient";
-//         ingredient.innerHTML = `
-//           <p class="ingredient-left">${item.name}</p>
-//           <p class="ingredient-right">${item.measure}</p>
-//         `;
-//         ingredients.append(ingredient);
-//       });
-
-//       // Set instructions (split by paragraphs)
-//       const paragraphs = meal.strInstructions
-//         .split(/\r?\n/)
-//         .filter(p => p.trim() !== "");
-//       document.getElementById("instructions").innerHTML =
-//         paragraphs.map(p => `<p class="instruction-step">${p}</p>`).join("");
-
-//       // Youtube button open
-//       document.querySelector(".product-cart-button").onclick = () => {
-//         window.open(meal.strYoutube);
-//       };
-
-//       // Load related meals/cards below
-//       const foodCards = document.getElementById('product-food-cards');
-//       foodCards.innerHTML = ''; // Clear old cards
-//       loadMeals(meal.strCategory);
-//     })
-//     .catch(error => console.log("Error loading meal:", error));
-// }
-
-// function loadMeals(category) {
-//   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
-//     .then(res => res.json())
-//     .then(data => {
-//       const allMeals = data.meals;
-//       const nextMeals = allMeals.slice(0, 4);
-//       nextMeals.forEach(food => createFoodCard(food));
-//     })
-//     .catch(error => console.log("Error loading related meals:", error));
-// }
-
-// // function createFoodCard(food) {
-// //   const foodCards = document.getElementById('product-food-cards');
-// //   const card = document.createElement("div");
-// //   card.className = "food_card";
-
-// //   // Clicking card navigates to new product page with that meal's id, causing reload & update
-// //   card.onclick = () => {
-// //     window.location.href = `product.html?id=${food.idMeal}`;
-// //   };
-
-// //   card.innerHTML = `
-// //       <img src="${food.strMealThumb}" alt="${food.strMeal}">
-// //       <div class="food-card-matter">
-// //           <h3>${food.strMeal}</h3>
-// //           <div class="rate-addcart">
-// //               <p>$${(Math.random() * 10 + 5).toFixed(2)}</p>
-// //               <button class="cart-button">
-// //                   <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff" alt="cart-icon">
-// //                   <p>Add</p>
-// //               </button>
-// //           </div>
-// //       </div>
-// //   `;
-
-// //   foodCards.appendChild(card);
-// // }
-// function createFoodCard(food) {
-//   const foodCards = document.getElementById('product-food-cards');
-//   const card = document.createElement("div");
-//   card.className = "food_card";
-
-//   // Clicking anywhere on the card except the "Add" button goes to product page
-//   card.addEventListener('click', (e) => {
-//     if (!e.target.closest('.cart-button')) { // ignore clicks on Add button
-//       window.location.href = `product.html?id=${food.idMeal}`;
-//     }
-//   });
-
-//   card.innerHTML = `
-//       <img src="${food.strMealThumb}" alt="${food.strMeal}">
-//       <div class="food-card-matter">
-//           <h3>${food.strMeal}</h3>
-//           <div class="rate-addcart">
-//               <p>$${(Math.random() * 10 + 5).toFixed(2)}</p>
-//               <button class="cart-button">
-//                   <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff" alt="cart-icon">
-//                   <p>Add</p>
-//               </button>
-//           </div>
-//       </div>
-//   `;
-
-//   foodCards.appendChild(card);
-
-//   // Optional: handle Add button click separately
-//   const addBtn = card.querySelector('.cart-button');
-//   addBtn.onclick = (e) => {
-//     e.stopPropagation(); // prevent card click
-//     console.log(`${food.strMeal} added to cart!`);
-//     // You can add your cart logic here
-//   };
-// }
-
-// function getIngredients(meal) {
-//   let ingredients = [];
-//   for (let i = 1; i <= 20; i++) {
-//     let name = meal[`strIngredient${i}`];
-//     let measure = meal[`strMeasure${i}`];
-//     if (name && name.trim() !== "") {
-//       ingredients.push({
-//         name: name.trim(),
-//         measure: measure ? measure.trim() : ""
-//       });
-//     }
-//   }
-//   return ingredients;
-// }
-
-// // Initial load with current mealId from URL
-// loadMeal(mealId);
+// =========================
+// GET MEAL ID
+// =========================
 const params = new URLSearchParams(window.location.search);
 const mealId = params.get("id");
-const mealPrice = params.get("price") || (Math.random()*10+5).toFixed(2);
 
-fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+let priceData = {};
+let foodCards;
+
+
+// =========================
+// LOAD PRICE JSON
+// =========================
+fetch("https://raw.githubusercontent.com/Sravan-2005/food-dash/main/food.json")
 .then(res => res.json())
 .then(data => {
+    data.forEach(item=>{
+        priceData[item.id] = item.price;
+    });
+    loadMealDetails();
+})
+.catch(err=>{
+    console.log("Price JSON error:", err);
+    loadMealDetails();
+});
+
+
+// =========================
+// LOAD MEAL DETAILS
+// =========================
+function loadMealDetails(){
+
+fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+.then(res=>res.json())
+.then(data=>{
 
     const meal = data.meals[0];
+    const mealPrice = priceData[meal.idMeal] ?? 10;
 
-    // LEFT SIDE IMAGE
     document.querySelector(".product-hero-left img").src = meal.strMealThumb;
 
-    // RIGHT SIDE INNER HTML
     const heroRight = document.querySelector(".product-hero-right");
 
     heroRight.innerHTML = `
@@ -271,12 +97,12 @@ fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
         </div>
 
         <div class="price-cart-row">
-            <p id="product-hero-left-price">$${mealPrice}</p>
+            <h1>$${mealPrice}</h1>
 
-            <button class="product-cart-button">
-                <img src="https://img.icons8.com/?size=24&id=9671&format=png&color=ffffff">
-                Add to Cart
-            </button>
+            <button class="cart-button" data-id="${meal.idMeal}">
+            <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff">
+            <p>Add to cart</p>
+        </button>
         </div>
 
         <h3>Ingredients</h3>
@@ -287,116 +113,124 @@ fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
     `;
 
     // INGREDIENTS
-    const ingredient_object = getIngredients(meal);
     const ingredients = document.getElementById("ingredients");
-
-    ingredient_object.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "ingredient";
-
-        div.innerHTML = `
-            <p class="ingredient-left">${item.name}</p>
-            <p class="ingredient-right">${item.measure}</p>
-        `;
-
-        ingredients.append(div);
+    getIngredients(meal).forEach(item=>{
+        ingredients.innerHTML += `
+            <div class="ingredient">
+                <p>${item.name}</p>
+                <p>${item.measure}</p>
+            </div>`;
     });
 
     // INSTRUCTIONS
-    const paragraphs = meal.strInstructions
-        .split(/\r?\n/)
-        .filter(p => p.trim() !== "");
-
     document.getElementById("instructions").innerHTML =
-        paragraphs.map(p => `<p class="instruction-step">${p}</p>`).join("");
+        meal.strInstructions
+        .split(/\r?\n/)
+        .filter(p=>p.trim()!=="")
+        .map(p=>`<p>${p}</p>`).join("");
 
-    // ADD TO CART BUTTON
-    document.querySelector(".product-cart-button").onclick = () => {
-
-        const cartItem = {
-            id: meal.idMeal,
-            name: meal.strMeal,
-            image: meal.strMealThumb,
-            price: mealPrice,
-            qty: 1
-        };
-
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        const existing = cart.find(item => item.id === cartItem.id);
-
-        if(existing){
-            existing.qty++;
-        } else {
-            cart.push(cartItem);
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-
-        alert("Added to cart ✅");
+    // ADD TO CART
+    document.querySelector(".cart-button").onclick = ()=>{
+        addToCart(meal, mealPrice);
     };
 
-    // LOAD SIMILAR MEALS
-    foodCards = document.getElementById('product-food-cards');
-    if(typeof loadMeals === "function"){
-        loadMeals(meal.strCategory);
-    }
-
+    // SIMILAR MEALS
+    foodCards = document.getElementById("product-food-cards");
+    foodCards.innerHTML = "";
+    loadMeals(meal.strCategory);
 });
-function loadMeals(categorie){
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
-    .then((res) => res.json())
-    .then(data => {
-       const allmeals=data.meals;
-        // data.meals.forEach(food => createFoodCard(food));
-       const nextMeals=allmeals.slice(0,4); 
-       nextMeals.forEach(food => createFoodCard(food));
+}
 
-        // const countnumber=document.createElement("p");
-        // countnumber.innerHTML=`${allmeals.length} meals found`;
-        // count.append(countnumber);
 
-      });
-  }
-  function createFoodCard(food){
-    const card = document.createElement("div");
-    card.className = "food_card";
-    card.onclick = () => {
-    window.location.href = `product.html?id=${food.idMeal}&price=${price}`;
+// =========================
+// LOAD SIMILAR MEALS
+// =========================
+function loadMeals(category){
+
+fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+.then(res=>res.json())
+.then(data=>{
+
+    data.meals
+    .filter(m=>m.idMeal !== mealId)
+    .slice(0,4)
+    .forEach(food=>createFoodCard(food));
+});
+}
+
+
+// =========================
+// CREATE FOOD CARD
+// =========================
+function createFoodCard(food){
+
+const price = priceData[food.idMeal] ?? 10;
+
+const card=document.createElement("div");
+card.className="food_card";
+
+card.innerHTML=`
+<div class="card-click-area">
+    <img src="${food.strMealThumb}">
+    <h3>${food.strMeal}</h3>
+</div>
+
+<div class="food-card-matter">
+    <div class="rate-addcart">
+        <p>$${price}</p>
+        <button class="cart-button" data-id="${food.idMeal}">
+            <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff">
+            <p>Add</p>
+    </div>
+</div>
+`;
+
+card.querySelector(".card-click-area").onclick=()=>{
+    window.location.href=`product.html?id=${food.idMeal}`;
 };
 
+card.querySelector(".cart-button").onclick=(e)=>{
+    e.stopPropagation();
+    addToCart(food, price);
+};
 
-    card.innerHTML = `
-        <img src="${food.strMealThumb}" alt="${food.strMeal}">
-        <div class="food-card-matter">
-            <h3>${food.strMeal}</h3>
-            <div class="rate-addcart">
-                <p>$${(Math.random()*10+5).toFixed(2)}</p>
-                <button class="cart-button">
-                    <img src="https://img.icons8.com/?size=16&id=9671&format=png&color=ffffff" alt="">
-                        <p>Add</p>
-                </button>
-            </div>
-        </div>
-    `;
+foodCards.appendChild(card);
+}
 
-    foodCards.appendChild(card);
-  }
+
+// =========================
+// INGREDIENTS
+// =========================
 function getIngredients(meal){
-    let ingredients = [];
 
-    for(let i=1; i<=20; i++){
-
-        let name = meal[`strIngredient${i}`];
-        let measure = meal[`strMeasure${i}`];
-
-        if(name && name.trim() !== ""){
-            ingredients.push({
-                name: name.trim(),
-                measure: measure ? measure.trim() : ""
-            });
-        }
+let arr=[];
+for(let i=1;i<=20;i++){
+    let name=meal[`strIngredient${i}`];
+    let measure=meal[`strMeasure${i}`];
+    if(name && name.trim()!==""){
+        arr.push({
+            name:name.trim(),
+            measure:measure?measure.trim():""
+        });
     }
+}
+return arr;
+}
 
-    return ingredients;
+
+// =========================
+// TOAST
+// =========================
+function showToast(message,type="success"){
+
+const container=document.getElementById("toast-container");
+if(!container) return;
+
+const toast=document.createElement("div");
+toast.className=`toast ${type}`;
+toast.innerText=message;
+
+container.appendChild(toast);
+
+setTimeout(()=>toast.remove(),3000);
 }

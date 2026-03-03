@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Dash</title>
+    <link rel="stylesheet" href="checkout.css">
+    <script src="checkout.js"></script>
+</head>
+<body>
+      <section id="Header" class="Header">
+        <div class="nav_bar">
+
+            <img class="logo" src="foodlogo.jpeg">
+            <span><strong>Food Dash</strong></span>
+        </div>
+            <div class="Menu">
+               <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="builder.html">Builder</a>
+
+               <a href="cart.html">
+                 <p><span>🛒</span>Cart</p>
+               </a>
+            </div>
+        
+    </section>
+
+    <div class="hovertext">
+        <a  href="menu.html">
+        <p class="backbtn">← Back to Menu</p>
+    </a>
+    </div>
+<h1 class="heeder">Checkout</h1>
+ <div class="checkOut_details">
+    <form class="summary_form" >
+        <div>
+       <fieldset class="field">
+        <legend class="legendd">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+             stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            <strong>Contact Information</strong>
+        </legend>
+        <label for="name">Full Name</label>
+        <input class="modify" type="text" placeholder="Jhon Doe">
+        <div>
+        <label for="email">Email</label>
+        <input class="modify" type="text" placeholder="jhon@example.com">
+        <label for="number">phone</label>
+        <input class="modify" type="text" placeholder="1234567890">
+        </div>
+       </fieldset>
+        <br>
+        <fieldset class="field">
+            <legend class="legendd">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-map-pin-icon lucide-map-pin">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                <circle cx="12" cy="10" r="3"/></svg>
+               <strong> Delivery Address</strong>
+            </legend>
+        <label for="street"> Street Address</label>
+        <input class="modify" type="text" placeholder="123 Main Street">
+        <label for="Apt">Apartment</label>
+        <input class="modify" type="text" placeholder="Apt 4B">
+        <div>
+        <label for="city">City</label>
+        <input class="modify" type="text" placeholder="1234567890">
+        <label for="Zipcode">Zip Code</label>
+        <input class="modify" type="text" placeholder="10001">
+        </div>
+        </fieldset>
+        <fieldset class="field">
+            <legend class="legendd">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                 class="lucide lucide-credit-card-icon lucide-credit-card">
+                    <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                    <strong>Payment Method</strong>
+            </legend>
+            <div class="payment_option">
+        <input class="modify" type="radio" >
+        <label for="cash">Cash On Delivery</label>
+        <p class="option-description">Pay when the delivery arrives.</p>
+        </div>
+        
+        <div class="payment_option">
+        <input class="modify" type="radio" >
+        <label for="card">Debit/ Credit Cards</label>
+        <p class="option-description">Secure Online Payment.</p>
+        </div>
+        </fieldset>
+        <fieldset class="field">
+            <legend class="legendd">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                 class="lucide lucide-notebook-pen-icon lucide-notebook-pen">
+                 <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4"/><path d="M2 10h4"/>
+                 <path d="M2 14h4"/><path d="M2 18h4"/>
+            <path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>
+        <strong>Order Notes</strong>    
+        </legend>
+        <input class="modify" type="text" placeholder="Any instraction for Special order">
+        </fieldset>
+        </div>
+        <div class="orderpage">
+        <button class="orderbtn">Place order</button>
+        </div>
+    </form>
+    <div class="order-summary">
+            <h3>Order Summary</h3>
+            <hr>
+            <div class="row">
+                <p>Subtotal</p>
+                <p id="total">$29.98</p>
+            </div>
+            <div class="tax row">
+                <p>Tax (8%)</p>
+                <p id="tax">$2.40</p>
+            </div>
+            <hr >
+            <div class="total row" >
+                <h3>Total</h3>
+                <h3 id="net-total">$32.38</h3>
+            </div>
+            </div>
+            <script src="checkout.js"></script>
+</body>
+</html>
