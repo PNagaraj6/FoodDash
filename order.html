@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+    <section id="Header" class="Header">
+        <div class="nav_bar">
+
+            <img class="logo" src="foodlogo.jpeg">
+            <span><strong>Food Dash</strong></span>
+        </div>
+        <div class="Menu">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="builder.html">Builder</a>
+
+            <a href="cart.html">
+                <p><span>🛒</span>Cart</p>
+            </a>
+        </div>
+
+    </section>
+
+    <main class="order-main">
+        <div class="container-center">
+            
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+
+
+            <h2 class="page-title text-center">Order Confirmed!</h2>
+            <p class="subtitle text-center">Thank you for your order. Your delicious meals are on the way!</p>
+
+    
+            <div class="card">
+
+                <div class="receipt-row">
+                    <div class="receipt-col">
+                        <h5>ORDER ID</h5>
+                        <p class="text-red font-bold">FD-MMC45U9Z-FTKJEQ</p>
+                    </div>
+                </div>
+
+                <div class="receipt-row">
+                    <div class="receipt-col">
+                        <h5>ORDER DATE</h5>
+                        <p class="font-bold" id="order-date">March 4, 2026 at 07:40 PM</p>
+                    </div>
+                </div>
+
+                <div class="receipt-row grid-2">
+                    <div class="receipt-col">
+                        <h5>DELIVERY TO</h5>
+                        <p class="font-bold" id="delivery-name"></p>
+                        <p class="text-sm text-gray" id="delivery-address"></p>
+                    </div>
+                    <div class="receipt-col">
+                        <h5>PAYMENT</h5>
+                        <p class="font-bold" id="payment-method"></p>
+                    </div>
+                </div>
+
+                
+                <div class="receipt-items">
+                    <h5>ITEMS ORDERED</h5>
+                    <div id="receipt-items-container">
+        
+                    </div>
+                </div>
+
+                <hr>
+
+    
+                <div class="summary-line">
+                    <span class="text-gray">Subtotal</span>
+                    <span class="text-gray" id="receipt-subtotal"></span>
+                </div>
+                <div class="summary-line">
+                    <span class="text-gray">Tax (8%)</span>
+                    <span class="text-gray" id="receipt-tax"></span>
+                </div>
+
+                <hr>
+
+                <div class="summary-line total">
+                    <span>Total</span>
+                    <span id="receipt-total"></span>
+                </div>
+            </div>
+
+    
+            <div class="center-actions">
+                <a href="menu.html" class="order-btn order-btn-primary">Order Another</a>
+                <a href="index.html" class="order-btn order-btn-outline">Back to Home</a>
+            </div>
+        </div>
+    </main>
+<!-- <h2>Customer Details</h2>
+
+<p><strong>Name:</strong> <span id="custName"></span></p>
+<p><strong>Email:</strong> <span id="custEmail"></span></p>
+<p><strong>Phone:</strong> <span id="custPhone"></span></p>
+
+<h2>Delivery Address</h2>
+
+<p id="custAddress"></p> -->
+    <section class="footer">
+        <p>&copy; 2026 My Website. All rights reserved.</p>
+    </section>
+
+    <script src="order.js"></script>
+</body>
+
+</html>

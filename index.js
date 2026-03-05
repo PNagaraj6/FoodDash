@@ -22,7 +22,7 @@
 //     </p>
 //   `;
 
-//   // 🔥 When clicked → go to product page
+
 //   card.addEventListener("click", () => {
 //     window.location.href = `product.html?id=${meal.idMeal}`;
 //   });
@@ -56,7 +56,7 @@ firstEight.forEach(meal => {
     </p>
   `;
 
-  // 🔥 When clicked → go to product page
+  
   card.addEventListener("click", () => {
     window.location.href = `product.html?id=${meal.idMeal}`;
   });

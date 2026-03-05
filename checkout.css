@@ -1,4 +1,4 @@
- * {
+* {
     margin: 0;
     box-sizing: border-box;
   }
@@ -10,7 +10,7 @@
   }
  
 
-  /* ----- HEADER ----- */
+  
   .Header {
     position: fixed;
     top: 0;
@@ -39,7 +39,7 @@
     color: red;
   }
 
-  /* ----- BACK BUTTON ----- */
+
   .backbtn {
     margin-top: 100px;
     margin-left: 10px;
@@ -55,15 +55,15 @@
     color: red;
   }
 
-  /* ----- MAIN LAYOUT ----- */
+  
   .checkout-container {
-    /* margin-top: 130px; */
+    
     display: flex;
     gap: 40px;
     justify-content: center;
   }
 
-  /* ----- FORM ----- */
+
   form.summary_form {
     background: whitesmoke;
     border: 2px solid black;
@@ -133,7 +133,7 @@
     background-color: #b30000;
   }
 
-  /* ----- ORDER SUMMARY ----- */
+  
   .order-summary {
     width: 30%;
     background: white;
@@ -211,3 +211,12 @@
     margin-top: 20px;
     margin-bottom: 40px;
   }
+
+  .footer{
+    
+    border-top: 2px solid rgb(255, 255, 255);
+    background-color: whitesmoke;
+   padding: 50px 50px;
+    text-align: center;
+    color: gray;
+}

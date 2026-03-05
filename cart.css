@@ -2,7 +2,7 @@
     margin: 0;
 }
 body{
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -199,4 +199,12 @@ height:auto
 }
 .carti h3{
     color: #334155;
+}
+.footer{
+    width: 100%;
+    border-top: 2px solid rgb(255, 255, 255);
+    background-color: whitesmoke;
+   padding: 50px 50px;
+    text-align: center;
+    color: gray;
 }
