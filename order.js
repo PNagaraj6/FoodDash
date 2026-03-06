@@ -79,4 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //     document.getElementById("custAddress").innerText =
 //         order.street + ", " + order.city + " - " + order.zipcode;
-// }
+// // }
+// localStorage.removeItem('cart');
+// console.log("Cart cleared after order.");
+// Clear cart when user clicks "Order Again" or "Back to Home"
+const clearCartButtons = document.querySelectorAll('.clear-cart-btn');
+
+clearCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        localStorage.removeItem('cart');       // Remove all cart items
+        console.log("Cart cleared via button click.");
+    });
+});

@@ -39,7 +39,7 @@
       <label for="email">Email</label>
       <input id="email" class="modify" type="email" placeholder="john@example.com" required />
       <label for="phone">Phone</label>
-      <input id="phone" class="modify" type="tel" placeholder="1234567890" required />
+      <input id="phone" class="modify" type="tel"  pattern="[0-9]{10}" placeholder="1234567890" required />
     </fieldset>
 
     <!-- Delivery Address -->
@@ -58,7 +58,7 @@
       <label for="city">City</label>
       <input id="city" class="modify" type="text" placeholder="Your City" required />
       <label for="zipcode">Zip Code</label>
-      <input id="zipcode" class="modify" type="text" placeholder="10001" required />
+      <input id="zipcode" class="modify" type="number"  placeholder="10001" required />
     </fieldset>
 
     <!-- Payment Method -->
@@ -85,11 +85,11 @@
 
     <div id="card-details" style="display:none;">
       <label for="card-number">Card Number</label>
-      <input id="card-number" type="text" placeholder="1234 5678 9012 3456" />
+      <input id="card-number" type="number" placeholder="1234 5678 9012 3456" />
       <label for="expiry">Expiry Date</label>
-      <input id="expiry" type="text" placeholder="MM/YY" />
+      <input id="expiry" type="number" placeholder="MM/YY" />
       <label for="cvv">CVV</label>
-      <input id="cvv" type="text" placeholder="123" />
+      <input id="cvv" type="number" placeholder="123" />
     </div>
 
     <fieldset class="field">
